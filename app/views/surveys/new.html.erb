@@ -22,15 +22,6 @@
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-          <!-- Label and input for admin_id -->
-          <div class="form-group">
-            <label for="admin_id" class="col-sm-2 control-label">
-              Admin
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="admin_id" name="admin_id" placeholder="Admin" class="form-control" value="<%= @survey.admin_id %>">
-            </div>
-          </div>
 
           <!-- Label and input for title -->
           <div class="form-group">

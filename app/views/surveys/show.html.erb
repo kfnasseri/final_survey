@@ -1,4 +1,4 @@
-<!-- Responsive panel example-->
+<!-- Responsive panel example Survey Show-->
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
@@ -10,8 +10,6 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Admin</dt>
-              <dd><%= @survey.admin_id %></dd>
 
               <dt>Title</dt>
               <dd><%= @survey.title %></dd>
@@ -37,4 +35,118 @@
   </div>
 </div>
 
-<!-- End responsive panel example -->
+<!-- End responsive panel example Survey Show -->
+
+<% @question = Question.new %>
+
+<!-- Validation failure messages -->
+
+<% if @question.errors.any? %>
+  <% @question.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example Show Questions-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Question #<%= @question.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Answer type</dt>
+              <dd><%= @question.answer_type %></dd>
+
+              <dt>Survey</dt>
+              <dd><%= @survey.id %></dd>
+
+              <dt>Label</dt>
+              <dd><%= @question.label %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/questions" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/questions/<%= @question.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_question/<%= @question.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example Show Questions -->
+
+
+<!-- Responsive panel example New Question -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Question</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_question" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for answer_type -->
+          <div class="form-group">
+            <label for="answer_type" class="col-sm-2 control-label">
+              Answer type
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="answer_type" name="answer_type" placeholder="Answer type" class="form-control" value="<%= @question.answer_type %>">
+            </div>
+          </div>
+
+          <!-- Label and input for survey_id -->
+          <div class="form-group">
+              <input type="hidden" id="survey_id" name="survey_id" placeholder="Survey" class="form-control" value="<%= @survey.id %>">
+          </div>
+
+          <!-- Label and input for label -->
+          <div class="form-group">
+            <label for="label" class="col-sm-2 control-label">
+              Label
+            </label>
+            <div class="col-sm-10">
+              <textarea id="label" name="label" placeholder="Label" class="form-control" rows="3"><%= @question.label %></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-success">
+                Create Question
+              </button>
+              or
+              <a href="/questions">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example New Question-->
+

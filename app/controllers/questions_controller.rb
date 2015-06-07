@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
     @question.label = params[:label]
 
     if @question.save
-      redirect_to "/questions", :notice => "Question created successfully."
+      redirect_to "/surveys/#{@question.survey_id}", :notice => "Question created successfully."
     else
       render 'new'
     end

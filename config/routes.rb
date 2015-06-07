@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get "/advisor/homepage", :controller => "homepages", :action => "advisor"
+
+
+
+  devise_for :views
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # Routes for the Response resource:
   # CREATE
   get "/responses/new", :controller => "responses", :action => "new"
