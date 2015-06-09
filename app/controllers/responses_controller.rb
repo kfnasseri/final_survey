@@ -1,14 +1,18 @@
 class ResponsesController < ApplicationController
   def index
     @responses = Response.all
+    @response = Response.find(params[:id])
+    @label = @response.question.label
   end
 
   def show
     @response = Response.find(params[:id])
+    @label = @response.question.label
   end
 
   def new
     @response = Response.new
+    @survey = Survey.first
   end
 
   def create
