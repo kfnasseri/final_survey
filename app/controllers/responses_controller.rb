@@ -1,8 +1,9 @@
 class ResponsesController < ApplicationController
   def index
     @responses = Response.all
-    @response = Response.find(params[:id])
-    @label = @response.question.label
+
+    # label = @response.question.label
+
   end
 
   def show
@@ -13,6 +14,7 @@ class ResponsesController < ApplicationController
   def new
     @response = Response.new
     @survey = Survey.first
+
   end
 
   def create
@@ -22,7 +24,7 @@ class ResponsesController < ApplicationController
     @response.answer = params[:answer]
 
     if @response.save
-      redirect_to "/responses", :notice => "Response created successfully."
+      redirect_to "/responses/new", :notice => "Response created successfully."
     else
       render 'new'
     end

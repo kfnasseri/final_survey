@@ -62,8 +62,6 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Answer type</dt>
-              <dd><%= question.answer_type %></dd>
 
               <dt>Label</dt>
               <dd><%= question.label %></dd>
@@ -109,11 +107,8 @@
 
           <!-- Label and input for answer_type -->
           <div class="form-group">
-            <label for="answer_type" class="col-sm-2 control-label">
-              Answer type
-            </label>
             <div class="col-sm-10">
-              <input type="text" id="answer_type" name="answer_type" placeholder="Answer type" class="form-control" value="<%= @question.answer_type %>">
+              <input type="hidden" id="answer_type" name="answer_type" placeholder="Answer type" class="form-control" value="text">
             </div>
           </div>
 
