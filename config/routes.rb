@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get "/homepage", :controller => "homepages", :action => "advisor"
 
+  get "/submission", :controller => "responses", :action => "submission"
 
+  get "/choose", :controller => "responses", :action => "choose"
 
   devise_for :views
   devise_for :admin_users, ActiveAdmin::Devise.config

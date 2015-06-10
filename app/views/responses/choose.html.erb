@@ -1,0 +1,7 @@
+<h3>Select a Survey to Log:</h3>
+
+<% @surveys.each do |survey| %>
+
+  <h5><a href= "/responses/new?survey_id=<%=survey.id %>"><%= survey.title %></h5></a>
+
+<% end %>
