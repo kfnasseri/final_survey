@@ -1,8 +1,7 @@
 class ResponsesController < ApplicationController
   def index
     @responses = Response.all
-
-    # label = @response.question.label
+    @surveys = Survey.find_by_id(params[:survey_id])
 
   end
 

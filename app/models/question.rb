@@ -1,4 +1,4 @@
 class Question < ActiveRecord::Base
-  has_many :responses
+  has_many :responses, dependent: :destroy
   belongs_to :survey
 end
